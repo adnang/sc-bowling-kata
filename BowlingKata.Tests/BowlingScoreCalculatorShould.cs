@@ -47,5 +47,13 @@ namespace BowlingKata.Tests
 
             score.Should().Be(expectedScore);
         }
+
+        [TestCase("--|-1|--|--|--|--|--|--|--|--||--", 1)]
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnFourthThrow(string game, int expectedScore)
+        {
+            var score = bowlingScoreCalculator.CalculateScore(game);
+
+            score.Should().Be(expectedScore);
+        }
     }
 }

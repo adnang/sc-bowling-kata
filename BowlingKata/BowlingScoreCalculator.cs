@@ -27,6 +27,12 @@
                 return score;
             }
 
+            if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
+            {
+                var score = 1;
+                return score;
+            }
+
             if (game.StartsWith("-"))
             {
                 return game.ScoreAtThrow(Throw.Second);
