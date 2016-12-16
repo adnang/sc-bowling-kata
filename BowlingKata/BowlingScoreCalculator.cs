@@ -7,16 +7,15 @@
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
                 return 0;
 
-            if (game.Equals("-1|--|--|--|--|--|--|--|--|--||--"))
-                return 1;
-
-            if (game.Equals("-2|--|--|--|--|--|--|--|--|--||--"))
-                return 2;
-
-            if (game.Equals("-3|--|--|--|--|--|--|--|--|--||--"))
-                return 3;
+            if (game.StartsWith("-"))
+                return SecondTurnScore(game);
 
             return game.FirstPinScore();
+        }
+
+        private static int SecondTurnScore(string game)
+        {
+            return int.Parse(game.Substring(1, 1));
         }
     }
 
