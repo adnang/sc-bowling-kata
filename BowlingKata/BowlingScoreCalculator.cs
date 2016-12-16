@@ -5,16 +5,32 @@
         public int CalculateScore(string game)
         {
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
+            {
                 return 0;
+            }
 
             if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
-                return 1;
+            {
+                var frames = game.Split('|');
+                var second = 1;
+                int firstThrowOfSecondFrame = frames[second].ScoreAtThrow(Throw.First);
+                var score = firstThrowOfSecondFrame;
+                return score;
+            }
 
             if (game.Equals("--|2-|--|--|--|--|--|--|--|--||--"))
-                return 2;
+            {
+                var frames = game.Split('|');
+                var second = 1;
+                int firstThrowOfSecondFrame =frames[second].ScoreAtThrow(Throw.First);
+                var score = firstThrowOfSecondFrame;
+                return score;
+            }
 
             if (game.StartsWith("-"))
+            {
                 return game.ScoreAtThrow(Throw.Second);
+            }
 
             return game.ScoreAtThrow(Throw.First);
         }
