@@ -30,6 +30,7 @@ namespace BowlingKata.Tests
 
         [TestCase("-1|--|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("-2|--|--|--|--|--|--|--|--|--||--", 2)]
+        [TestCase("-3|--|--|--|--|--|--|--|--|--||--", 3)]
         public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitInSecondTurn(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);

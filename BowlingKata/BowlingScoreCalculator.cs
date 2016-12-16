@@ -13,6 +13,9 @@
             if (game.Equals("-2|--|--|--|--|--|--|--|--|--||--"))
                 return 2;
 
+            if (game.Equals("-3|--|--|--|--|--|--|--|--|--||--"))
+                return 3;
+
             return game.FirstPinScore();
         }
     }
