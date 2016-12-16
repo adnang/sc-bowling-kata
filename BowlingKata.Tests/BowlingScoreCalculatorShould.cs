@@ -21,21 +21,19 @@ namespace BowlingKata.Tests
         [TestCase("1-|--|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("2-|--|--|--|--|--|--|--|--|--||--", 2)]
         [TestCase("3-|--|--|--|--|--|--|--|--|--||--", 3)]
-        public void ReturnExpected_WhenCalculatingScore_GivenNPinHitInFirstFrame(string game, int expectedScore)
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitInFirstTurn(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);
 
             score.Should().Be(expectedScore);
         }
 
-        [Test]
-        public void Return1_WhenCalculatingScore_Given1PinHitInSecondTurnOfFirstFrame()
+        [TestCase("-1|--|--|--|--|--|--|--|--|--||--", 1)]
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitInSecondTurn(string game, int expectedScore)
         {
-            var game = "-1|--|--|--|--|--|--|--|--|--||--";
-
             var score = bowlingScoreCalculator.CalculateScore(game);
 
-            score.Should().Be(1);
+            score.Should().Be(expectedScore);
         }
     }
 }
