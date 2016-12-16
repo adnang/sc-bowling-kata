@@ -7,7 +7,17 @@
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
                 return 0;
 
-            return int.Parse(game.Substring(0, 1));
+            return game.FirstPinScore();
+        }
+    }
+
+    static class GameExtensions
+    {
+        public static int FirstPinScore(this string game)
+        {
+            var startIndex = 0;
+            var length = 1;
+            return int.Parse(game.Substring(startIndex, length));
         }
     }
 }
