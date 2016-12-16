@@ -10,6 +10,9 @@
             if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
                 return 1;
 
+            if (game.Equals("--|2-|--|--|--|--|--|--|--|--||--"))
+                return 2;
+
             if (game.StartsWith("-"))
                 return game.ScoreAtThrow(Throw.Second);
 
