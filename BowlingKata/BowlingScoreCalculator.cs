@@ -8,22 +8,17 @@
                 return 0;
 
             if (game.StartsWith("-"))
-                return SecondTurnScore(game);
+                return game.NthTurnScore(2);
 
-            return game.FirstTurnScore();
-        }
-
-        private static int SecondTurnScore(string game)
-        {
-            return int.Parse(game.Substring(1, 1));
+            return game.NthTurnScore(1);
         }
     }
 
     static class GameExtensions
     {
-        public static int FirstTurnScore(this string game)
+        public static int NthTurnScore(this string game, int position)
         {
-            var startIndex = 0;
+            var startIndex = position - 1;
             var length = 1;
             return int.Parse(game.Substring(startIndex, length));
         }
