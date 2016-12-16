@@ -6,53 +6,76 @@
         {
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
             {
-                return 0;
-            }
+                var score = 0;
 
-            if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
-            {
-                var frames = game.Split('|');
-                var second = 1;
-                int firstThrowOfSecondFrame = frames[second].ScoreAtThrow(Throw.First);
-                var score = firstThrowOfSecondFrame;
                 return score;
             }
 
-            if (game.Equals("--|2-|--|--|--|--|--|--|--|--||--"))
+            var frames = game.Split('|');
+
+            var firstFrame = frames[0];
+
+            var secondFrame = frames[1];
+            if (!secondFrame.ThrowAt(Position.First).Equals('-'))
             {
-                var frames = game.Split('|');
-                var second = 1;
-                int firstThrowOfSecondFrame =frames[second].ScoreAtThrow(Throw.First);
-                var score = firstThrowOfSecondFrame;
-                return score;
+                if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
+                {
+                    int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
+                    var score = firstThrowOfSecondFrame;
+
+                    return score;
+                }
+
+                if (game.Equals("--|2-|--|--|--|--|--|--|--|--||--"))
+                {
+                    int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
+                    var score = firstThrowOfSecondFrame;
+
+                    return score;
+                }
             }
+
 
             if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
-            {
-                var score = 1;
+            {                
+                int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfSecondFrame;
+
                 return score;
             }
 
             if (game.StartsWith("-"))
             {
-                return game.ScoreAtThrow(Throw.Second);
+                var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfFirstFrame;
+
+                return score;
             }
 
-            return game.ScoreAtThrow(Throw.First);
+            var scoreAtThrow = firstFrame.ScoreAt(Position.First);
+
+            return scoreAtThrow;
         }
     }
 
     static class GameExtensions
     {
-        public static int ScoreAtThrow(this string game, Throw @throw)
+        public static int ScoreAt(this string frame, Position position)
         {
-            var startIndex = (int)@throw;
+            var throwAtPosition = frame.ThrowAt(position);
+            return int.Parse(throwAtPosition);
+        }
+
+        public static string ThrowAt(this string frame, Position position)
+        {
+            var startIndex = (int) position;
             const int length = 1;
-            return int.Parse(game.Substring(startIndex, length));
+            var throwAtPosition = frame.Substring(startIndex, length);
+            return throwAtPosition;
         }
     }
 
-    internal enum Throw
+    internal enum Position
     {
         First, Second
     }
