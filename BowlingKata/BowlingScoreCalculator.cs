@@ -7,6 +7,9 @@
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
                 return 0;
 
+            if (game.Equals("-1|--|--|--|--|--|--|--|--|--||--"))
+                return 1;
+
             return game.FirstPinScore();
         }
     }
