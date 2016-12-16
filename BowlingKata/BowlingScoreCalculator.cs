@@ -7,20 +7,28 @@
             if (game.Equals("--|--|--|--|--|--|--|--|--|--||--"))
                 return 0;
 
-            if (game.StartsWith("-"))
-                return game.NthTurnScore(2);
+            if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
+                return 1;
 
-            return game.NthTurnScore(1);
+            if (game.StartsWith("-"))
+                return game.ScoreAtThrow(Throw.Second);
+
+            return game.ScoreAtThrow(Throw.First);
         }
     }
 
     static class GameExtensions
     {
-        public static int NthTurnScore(this string game, int position)
+        public static int ScoreAtThrow(this string game, Throw @throw)
         {
-            var startIndex = position - 1;
-            var length = 1;
+            var startIndex = (int)@throw;
+            const int length = 1;
             return int.Parse(game.Substring(startIndex, length));
         }
+    }
+
+    internal enum Throw
+    {
+        First, Second
     }
 }
