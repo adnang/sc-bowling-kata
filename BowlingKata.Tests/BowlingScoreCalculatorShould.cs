@@ -9,7 +9,11 @@ namespace BowlingKata.Tests
         [Test]
         public void Return0_WhenCalculatingScore_GivenAllMisses()
         {
-            var score = new BowlingScoreCalculator().CalculateScore("--|--|--|--|--|--|--|--|--|--||--");
+            var bowlingScoreCalculator = new BowlingScoreCalculator();
+            var game = "--|--|--|--|--|--|--|--|--|--||--";
+
+            var score = bowlingScoreCalculator.CalculateScore(game);
+
             score.Should().Be(0);
         }
     }
