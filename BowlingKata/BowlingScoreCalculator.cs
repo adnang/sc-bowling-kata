@@ -13,10 +13,8 @@
 
             var frames = game.Split('|');
 
-            var firstFrame = frames[0];
-
             var secondFrame = frames[1];
-            if (!secondFrame.ThrowAt(Position.First).Equals('-'))
+            if (IsHitAtFirstThrowOf(secondFrame))
             {
                 if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
                 {
@@ -35,7 +33,6 @@
                 }
             }
 
-
             if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
             {                
                 int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
@@ -44,9 +41,28 @@
                 return score;
             }
 
-            if (game.StartsWith("-"))
+            var firstFrame = frames[0];
+            
+            int secondThrowOfFirstFrame;
+            if (game.Equals("-1|--|--|--|--|--|--|--|--|--||--"))
             {
-                var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
+                secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfFirstFrame;
+
+                return score;
+            }
+
+            if (game.Equals("-2|--|--|--|--|--|--|--|--|--||--"))
+            {
+                secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfFirstFrame;
+
+                return score;
+            }
+
+            if (game.Equals("-3|--|--|--|--|--|--|--|--|--||--"))
+            {
+                secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
                 var score = secondThrowOfFirstFrame;
 
                 return score;
@@ -55,6 +71,11 @@
             var scoreAtThrow = firstFrame.ScoreAt(Position.First);
 
             return scoreAtThrow;
+        }
+
+        private static bool IsHitAtFirstThrowOf(string frame)
+        {
+            return !frame.ThrowAt(Position.First).Equals('-');
         }
     }
 
