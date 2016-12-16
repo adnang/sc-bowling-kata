@@ -10,7 +10,7 @@
             if (game.StartsWith("-"))
                 return SecondTurnScore(game);
 
-            return game.FirstPinScore();
+            return game.FirstTurnScore();
         }
 
         private static int SecondTurnScore(string game)
@@ -21,7 +21,7 @@
 
     static class GameExtensions
     {
-        public static int FirstPinScore(this string game)
+        public static int FirstTurnScore(this string game)
         {
             var startIndex = 0;
             var length = 1;
