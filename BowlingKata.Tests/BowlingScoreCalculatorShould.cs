@@ -18,24 +18,13 @@ namespace BowlingKata.Tests
             score.Should().Be(0);
         }
 
-        [Test]
-        public void Return1_WhenCalculatingScore_Given1PinHitInFirstFrame()
+        [TestCase("1-|--|--|--|--|--|--|--|--|--||--", 1)]
+        [TestCase("2-|--|--|--|--|--|--|--|--|--||--", 2)]
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinHitInFirstFrame(string game, int expectedScore)
         {
-            var game = "1-|--|--|--|--|--|--|--|--|--||--";
-
-            int score = bowlingScoreCalculator.CalculateScore(game);
-
-            score.Should().Be(1);
-        }
-
-        [Test]
-        public void Return2_WhenCalculatingScore_Given2PinHitInFirstFrame()
-        {
-            var game = "2-|--|--|--|--|--|--|--|--|--||--";
-
             var score = bowlingScoreCalculator.CalculateScore(game);
 
-            score.Should().Be(2);
+            score.Should().Be(expectedScore);
         }
     }
 }
