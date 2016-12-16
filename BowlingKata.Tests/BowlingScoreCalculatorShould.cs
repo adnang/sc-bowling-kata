@@ -27,5 +27,15 @@ namespace BowlingKata.Tests
 
             score.Should().Be(1);
         }
+
+        [Test]
+        public void Return2_WhenCalculatingScore_Given2PinHitInFirstFrame()
+        {
+            var game = "2-|--|--|--|--|--|--|--|--|--||--";
+
+            var score = bowlingScoreCalculator.CalculateScore(game);
+
+            score.Should().Be(2);
+        }
     }
 }
