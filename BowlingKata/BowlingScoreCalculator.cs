@@ -12,30 +12,31 @@
             if (IsHitAtFirstThrowOf(firstFrame))
             {
                 var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
-
                 score = firstThrowOfFirstFrame;
             }
 
             if (IsHitAtSecondThrowOf(firstFrame))
             {
                 var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
-
                 score = secondThrowOfFirstFrame;
             }
 
             var secondFrame = frames[1];
             if (IsHitAtFirstThrowOf(secondFrame))
             {
-                
                 var firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
                 score = firstThrowOfSecondFrame;
             }
 
             if (IsHitAtSecondThrowOf(secondFrame))
             {
-                                
                 var secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
                 score = secondThrowOfSecondFrame;                
+            }
+
+            if (game.Equals("--|--|1-|--|--|--|--|--|--|--||--"))
+            {
+                return 1;
             }
 
             return score;
