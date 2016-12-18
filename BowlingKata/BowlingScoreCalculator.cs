@@ -4,52 +4,41 @@
     {
         public int CalculateScore(string game)
         {
+            var score = 0;
+
             var frames = game.Split('|');
+
             var firstFrame = frames[0];
             if (IsHitAtFirstThrowOf(firstFrame))
             {
                 var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
 
-                var score = firstThrowOfFirstFrame;
-                return score;
+                score = firstThrowOfFirstFrame;
             }
 
             if (IsHitAtSecondThrowOf(firstFrame))
             {
                 var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
 
-                var score = secondThrowOfFirstFrame;
-                return score;
+                score = secondThrowOfFirstFrame;
             }
 
             var secondFrame = frames[1];
             if (IsHitAtFirstThrowOf(secondFrame))
             {
                 
-                int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
-                var score = firstThrowOfSecondFrame;
-
-                return score;
-                
+                var firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
+                score = firstThrowOfSecondFrame;
             }
 
-            if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
-            {                
-                int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
-                var score = secondThrowOfSecondFrame;
-
-                return score;
+            if (IsHitAtSecondThrowOf(secondFrame))
+            {
+                                
+                var secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
+                score = secondThrowOfSecondFrame;                
             }
 
-            if (game.Equals("--|-2|--|--|--|--|--|--|--|--||--"))
-            {                
-                int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
-                var score = secondThrowOfSecondFrame;
-
-                return score;
-            }
-
-            return 0;
+            return score;
         }
 
         private bool IsHitAtSecondThrowOf(string frame)
