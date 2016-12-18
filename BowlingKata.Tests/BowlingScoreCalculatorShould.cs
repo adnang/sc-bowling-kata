@@ -22,17 +22,10 @@ namespace BowlingKata.Tests
         [TestCase("1-|--|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("2-|--|--|--|--|--|--|--|--|--||--", 2)]
         [TestCase("3-|--|--|--|--|--|--|--|--|--||--", 3)]
-        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnFirstThrow(string game, int expectedScore)
-        {
-            var score = bowlingScoreCalculator.CalculateScore(game);
-
-            score.Should().Be(expectedScore);
-        }
-
         [TestCase("-1|--|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("-2|--|--|--|--|--|--|--|--|--||--", 2)]
         [TestCase("-3|--|--|--|--|--|--|--|--|--||--", 3)]
-        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnSecondThrow(string game, int expectedScore)
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnOneThrowOfFirstFrame(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);
 
@@ -41,16 +34,9 @@ namespace BowlingKata.Tests
 
         [TestCase("--|1-|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("--|2-|--|--|--|--|--|--|--|--||--", 2)]
-        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnThirdThrow(string game, int expectedScore)
-        {
-            var score = bowlingScoreCalculator.CalculateScore(game);
-
-            score.Should().Be(expectedScore);
-        }
-
         [TestCase("--|-1|--|--|--|--|--|--|--|--||--", 1)]
         [TestCase("--|-2|--|--|--|--|--|--|--|--||--", 2)]
-        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnFourthThrow(string game, int expectedScore)
+        public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnOnePositionOfSecondFrame(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);
 

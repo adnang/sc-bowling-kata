@@ -41,9 +41,10 @@
             return score;
         }
 
-        private bool IsHitAtSecondThrowOf(string frame)
+        private static bool IsHitAtSecondThrowOf(string frame)
         {
-            return !frame.ThrowAt(Position.Second).Equals("-");
+            var isMiss = frame.ThrowAt(Position.Second).Equals("-");
+            return !isMiss;
         }
 
         private static bool IsHitAtFirstThrowOf(string frame)
@@ -53,7 +54,7 @@
         }
     }
 
-    static class GameExtensions
+    static class FrameExtensions
     {
         public static int ScoreAt(this string frame, Position position)
         {
@@ -63,8 +64,8 @@
 
         public static string ThrowAt(this string frame, Position position)
         {
-            var startIndex = (int) position;
             const int length = 1;
+            var startIndex = (int) position;
             var throwAtPosition = frame.Substring(startIndex, length);
             return throwAtPosition;
         }
