@@ -41,6 +41,11 @@
                 score = firstThrowOfThirdFrame;
             }
 
+            if (game.Equals("--|--|-1|--|--|--|--|--|--|--||--"))
+            {
+                return 1;
+            }
+
             return score;
         }
 
