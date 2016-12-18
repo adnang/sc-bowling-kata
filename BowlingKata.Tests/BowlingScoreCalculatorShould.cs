@@ -44,6 +44,7 @@ namespace BowlingKata.Tests
         }
 
         [TestCase("--|--|1-|--|--|--|--|--|--|--||--", 1)]
+        [TestCase("--|--|2-|--|--|--|--|--|--|--||--", 2)]
         public void ReturnExpected_WhenCalculatingScore_GivenNPinsHitOnOnePositionOfThirdFrame(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);
