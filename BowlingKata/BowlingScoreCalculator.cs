@@ -41,6 +41,14 @@
                 return score;
             }
 
+            if (game.Equals("--|-2|--|--|--|--|--|--|--|--||--"))
+            {                
+                int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfSecondFrame;
+
+                return score;
+            }
+
             return 0;
         }
 
