@@ -4,90 +4,41 @@
     {
         public int CalculateScore(string game)
         {
-
             var frames = game.Split('|');
             var firstFrame = frames[0];
             if (IsHitAtFirstThrowOf(firstFrame))
             {
-                if (game.Equals("1-|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
+                var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
 
-                    return firstThrowOfFirstFrame;
-                }
-
-                if (game.Equals("2-|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
-
-                    return firstThrowOfFirstFrame;
-                }
-
-                if (game.Equals("3-|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
-
-                    return firstThrowOfFirstFrame;
-                }
+                var score = firstThrowOfFirstFrame;
+                return score;
             }
 
             if (IsHitAtSecondThrowOf(firstFrame))
             {
-                int secondThrowOfFirstFrame;
-                if (game.Equals("-1|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
-                    var score = secondThrowOfFirstFrame;
+                var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
 
-                    return score;
-                }
-
-                if (game.Equals("-2|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
-                    var score = secondThrowOfFirstFrame;
-
-                    return score;
-                }
-
-                if (game.Equals("-3|--|--|--|--|--|--|--|--|--||--"))
-                {
-                    secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
-                    var score = secondThrowOfFirstFrame;
-
-                    return score;
-                }
+                var score = secondThrowOfFirstFrame;
+                return score;
             }
 
             var secondFrame = frames[1];
             if (IsHitAtFirstThrowOf(secondFrame))
             {
-                if (game.Equals("--|1-|--|--|--|--|--|--|--|--||--"))
-                {
-                    int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
-                    var score = firstThrowOfSecondFrame;
+                
+                int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
+                var score = firstThrowOfSecondFrame;
 
-                    return score;
-                }
-
-                if (game.Equals("--|2-|--|--|--|--|--|--|--|--||--"))
-                {
-                    int firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
-                    var score = firstThrowOfSecondFrame;
-
-                    return score;
-                }
+                return score;
+                
             }
 
-            if (IsHitAtSecondThrowOf(secondFrame))
-            {
-                if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
-                {                
-                    int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
-                    var score = secondThrowOfSecondFrame;
+            if (game.Equals("--|-1|--|--|--|--|--|--|--|--||--"))
+            {                
+                int secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
+                var score = secondThrowOfSecondFrame;
 
-                    return score;
-                }
+                return score;
             }
 
             return 0;
@@ -95,12 +46,13 @@
 
         private bool IsHitAtSecondThrowOf(string frame)
         {
-            return !frame.ThrowAt(Position.Second).Equals('-');
+            return !frame.ThrowAt(Position.Second).Equals("-");
         }
 
         private static bool IsHitAtFirstThrowOf(string frame)
         {
-            return !frame.ThrowAt(Position.First).Equals('-');
+            var isMiss = frame.ThrowAt(Position.First).Equals("-");
+            return !isMiss;
         }
     }
 
