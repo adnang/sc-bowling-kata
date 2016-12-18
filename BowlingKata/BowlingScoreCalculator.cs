@@ -37,13 +37,14 @@
             string thirdFrame = frames[2];
             if (IsHitAtFirstThrowOf(thirdFrame))
             {
-                int firstThrowOfThirdFrame = thirdFrame.ScoreAt(Position.First);
+                var firstThrowOfThirdFrame = thirdFrame.ScoreAt(Position.First);
                 score = firstThrowOfThirdFrame;
             }
 
-            if (game.Equals("--|--|-1|--|--|--|--|--|--|--||--"))
+            if (IsHitAtSecondThrowOf(thirdFrame))
             {
-                return 1;
+                var secondThrowOfThirdFrame = thirdFrame.ScoreAt(Position.Second);
+                score = secondThrowOfThirdFrame;
             }
 
             return score;
