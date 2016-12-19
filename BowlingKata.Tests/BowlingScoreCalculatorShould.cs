@@ -31,6 +31,7 @@ namespace BowlingKata.Tests
         [TestCase("--|--|2-|--|--|--|--|--|--|--||--", 2)]
         [TestCase("--|--|-1|--|--|--|--|--|--|--||--", 1)]
         [TestCase("--|--|-2|--|--|--|--|--|--|--||--", 2)]
+        [TestCase("--|--|--|1-|--|--|--|--|--|--||--", 1)]
         public void ReturnExpected_WhenCalculatingScore_GivenPinsHitOnOneThrowOfAFrame(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);

@@ -1,10 +1,12 @@
-﻿namespace BowlingKata
+﻿using System.Linq;
+
+namespace BowlingKata
 {
     public class BowlingScoreCalculator
     {
         public int CalculateScore(string game)
         {
-            var frames = game.Split('|');
+            var frames = MainFrames(game);
 
             var firstFrame = frames[0];
             var score = firstFrame.Score();
@@ -15,7 +17,15 @@
             var thirdFrame = frames[2];
             score += thirdFrame.Score();
 
+            var fourthFrame = frames[3];
+            score += fourthFrame.Score();
+
             return score;
+        }
+
+        private static string[] MainFrames(string game)
+        {
+            return game.Split('|');
         }
     }
 
