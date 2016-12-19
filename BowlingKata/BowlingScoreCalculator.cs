@@ -7,32 +7,41 @@
             var frames = game.Split('|');
 
             var firstFrame = frames[0];
-            var score = FrameScore(firstFrame);
+            var score = firstFrame.Score();
 
             var secondFrame = frames[1];
-            score += FrameScore(secondFrame);
+            score += secondFrame.Score();
 
             var thirdFrame = frames[2];
-            score += FrameScore(thirdFrame);
+            score += thirdFrame.Score();
 
             return score;
         }
+    }
 
-        private static int FrameScore(string firstFrame)
+    static class FrameExtensions
+    {
+        public static int Score(this string frame)
         {
             var score = 0;
-            if (IsHitAtFirstThrowOf(firstFrame))
+            if (IsHitAtFirstThrowOf(frame))
             {
-                var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
-                score = firstThrowOfFirstFrame;
+                var firstThrowOfFrame = frame.ScoreAt(Position.First);
+                score = firstThrowOfFrame;
             }
 
-            if (IsHitAtSecondThrowOf(firstFrame))
+            if (IsHitAtSecondThrowOf(frame))
             {
-                var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
-                score = secondThrowOfFirstFrame;
+                var secondThrowOfFrame = frame.ScoreAt(Position.Second);
+                score = secondThrowOfFrame;
             }
             return score;
+        }
+
+        private static bool IsHitAtFirstThrowOf(string frame)
+        {
+            var isMiss = frame.ThrowAt(Position.First).Equals("-");
+            return !isMiss;
         }
 
         private static bool IsHitAtSecondThrowOf(string frame)
@@ -41,27 +50,18 @@
             return !isMiss;
         }
 
-        private static bool IsHitAtFirstThrowOf(string frame)
-        {
-            var isMiss = frame.ThrowAt(Position.First).Equals("-");
-            return !isMiss;
-        }
-    }
-
-    static class FrameExtensions
-    {
-        public static int ScoreAt(this string frame, Position position)
-        {
-            var throwAtPosition = frame.ThrowAt(position);
-            return int.Parse(throwAtPosition);
-        }
-
-        public static string ThrowAt(this string frame, Position position)
+        private static string ThrowAt(this string frame, Position position)
         {
             const int length = 1;
             var startIndex = (int) position;
             var throwAtPosition = frame.Substring(startIndex, length);
             return throwAtPosition;
+        }
+
+        private static int ScoreAt(this string frame, Position position)
+        {
+            var throwAtPosition = frame.ThrowAt(position);
+            return int.Parse(throwAtPosition);
         }
     }
 
