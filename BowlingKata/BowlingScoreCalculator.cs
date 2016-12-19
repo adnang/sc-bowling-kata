@@ -4,11 +4,23 @@
     {
         public int CalculateScore(string game)
         {
-            var score = 0;
-
             var frames = game.Split('|');
 
             var firstFrame = frames[0];
+            var score = FrameScore(firstFrame);
+
+            var secondFrame = frames[1];
+            score += FrameScore(secondFrame);
+
+            var thirdFrame = frames[2];
+            score += FrameScore(thirdFrame);
+
+            return score;
+        }
+
+        private static int FrameScore(string firstFrame)
+        {
+            var score = 0;
             if (IsHitAtFirstThrowOf(firstFrame))
             {
                 var firstThrowOfFirstFrame = firstFrame.ScoreAt(Position.First);
@@ -20,33 +32,6 @@
                 var secondThrowOfFirstFrame = firstFrame.ScoreAt(Position.Second);
                 score = secondThrowOfFirstFrame;
             }
-
-            var secondFrame = frames[1];
-            if (IsHitAtFirstThrowOf(secondFrame))
-            {
-                var firstThrowOfSecondFrame = secondFrame.ScoreAt(Position.First);
-                score = firstThrowOfSecondFrame;
-            }
-
-            if (IsHitAtSecondThrowOf(secondFrame))
-            {
-                var secondThrowOfSecondFrame = secondFrame.ScoreAt(Position.Second);
-                score = secondThrowOfSecondFrame;                
-            }
-
-            var thirdFrame = frames[2];
-            if (IsHitAtFirstThrowOf(thirdFrame))
-            {
-                var firstThrowOfThirdFrame = thirdFrame.ScoreAt(Position.First);
-                score = firstThrowOfThirdFrame;
-            }
-
-            if (IsHitAtSecondThrowOf(thirdFrame))
-            {
-                var secondThrowOfThirdFrame = thirdFrame.ScoreAt(Position.Second);
-                score = secondThrowOfThirdFrame;
-            }
-
             return score;
         }
 
