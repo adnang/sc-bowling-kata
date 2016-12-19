@@ -71,5 +71,15 @@ namespace BowlingKata.Tests
 
             score.Should().Be(expectedScore);
         }
+
+        [TestCase("1-|1-|--|--|--|--|--|--|--|--||--", 2)]
+        [TestCase("13|-4|--|--|--|--|--|--|--|--||--", 8)]
+        [TestCase("13|-2|2-|--|--|--|--|--|--|--||--", 8)]
+        public void ReturnSumOfFrames_WhenCalculatingScore_GivenPinsHitOnThrowsInMultipleFrames(string game, int expectedScore)
+        {
+            var score = bowlingScoreCalculator.CalculateScore(game);
+
+            score.Should().Be(expectedScore);
+        }
     }
 }
