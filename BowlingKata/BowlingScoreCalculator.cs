@@ -34,7 +34,7 @@
                 score = secondThrowOfSecondFrame;                
             }
 
-            string thirdFrame = frames[2];
+            var thirdFrame = frames[2];
             if (IsHitAtFirstThrowOf(thirdFrame))
             {
                 var firstThrowOfThirdFrame = thirdFrame.ScoreAt(Position.First);
