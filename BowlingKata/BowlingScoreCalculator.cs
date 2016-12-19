@@ -8,24 +8,17 @@ namespace BowlingKata
         {
             var frames = MainFrames(game);
 
-            var firstFrame = frames[0];
-            var score = firstFrame.Score();
-
-            var secondFrame = frames[1];
-            score += secondFrame.Score();
-
-            var thirdFrame = frames[2];
-            score += thirdFrame.Score();
-
-            var fourthFrame = frames[3];
-            score += fourthFrame.Score();
-
-            return score;
+            var finalScore = 0;
+            foreach (var frame in frames)
+            {
+                finalScore += frame.Score();
+            }
+            return finalScore;
         }
 
         private static string[] MainFrames(string game)
         {
-            return game.Split('|');
+            return game.Split('|').Take(10).ToArray();
         }
     }
 
