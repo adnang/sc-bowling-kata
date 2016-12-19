@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BowlingKata
 {
@@ -16,9 +17,9 @@ namespace BowlingKata
             return finalScore;
         }
 
-        private static string[] MainFrames(string game)
+        private static IEnumerable<string> MainFrames(string game)
         {
-            return game.Split('|').Take(10).ToArray();
+            return game.Split('|').Take(10);
         }
     }
 
