@@ -33,7 +33,7 @@
             if (IsHitAtSecondThrowOf(frame))
             {
                 var secondThrowOfFrame = frame.ScoreAt(Position.Second);
-                score = secondThrowOfFrame;
+                score += secondThrowOfFrame;
             }
             return score;
         }
