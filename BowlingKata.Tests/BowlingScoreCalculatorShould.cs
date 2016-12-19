@@ -40,16 +40,9 @@ namespace BowlingKata.Tests
 
         [TestCase("11|--|--|--|--|--|--|--|--|--||--", 2)]
         [TestCase("23|--|--|--|--|--|--|--|--|--||--", 5)]
-        public void ReturnSumOfThrows_WhenCalculatingScore_GivenPinsHitOnBothThrowsOfFirstFrame(string game, int expectedScore)
-        {
-            var score = bowlingScoreCalculator.CalculateScore(game);
-
-            score.Should().Be(expectedScore);
-        }
-
         [TestCase("--|23|--|--|--|--|--|--|--|--||--", 5)]
         [TestCase("--|45|--|--|--|--|--|--|--|--||--", 9)]
-        public void ReturnSumOfThrows_WhenCalculatingScore_GivenPinsHitOnBothThrowsOfSecondFrame(string game, int expectedScore)
+        public void ReturnSumOfThrows_WhenCalculatingScore_GivenPinsHitOnBothThrowsOfAMainFrame(string game, int expectedScore)
         {
             var score = bowlingScoreCalculator.CalculateScore(game);
 
