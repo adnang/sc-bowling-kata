@@ -44,8 +44,13 @@ namespace BowlingKata
 
         private static bool IsHitAtFirstThrowOf(string frame)
         {
-            var isMiss = frame.ThrowAt(Position.First).Equals("-");
+            var isMiss = IsMiss(frame.ThrowAt(Position.First));
             return !isMiss;
+        }
+
+        private static bool IsMiss(string @throw)
+        {
+            return @throw.Equals("-");
         }
 
         private static bool IsHitAtSecondThrowOf(string frame)
